@@ -1,0 +1,98 @@
+<template>
+  <div class="input">
+    <div class="input__label">{{ label }}</div>
+    <div
+      class="input__container"
+      :class="[{ disabled: disabled }, { danger: isNotValid }]"
+    >
+      <input
+        type="text"
+        placeholder="Введите данные"
+        :disabled="disabled"
+        :value="value"
+        @input="onInput"
+      />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "VInput",
+  props: {
+    label: {
+      type: String,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
+    },
+    value: {
+      type: String,
+    },
+  },
+  computed: {
+    isNotValid() {
+      return this.required && this.value === "";
+    },
+  },
+  methods: {
+    onInput(event) {
+      this.$emit("input", event.target.value);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.input {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000000;
+
+  &__label {
+    margin-bottom: 8px;
+  }
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border: 1px solid #dfe3e6;
+    border-radius: 3px;
+    background-color: white;
+
+    &:not(.disabled):hover {
+      border-color: #000000;
+    }
+
+    input {
+      width: 100%;
+      outline: none;
+
+      font-style: inherit;
+      font-weight: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      color: inherit;
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+}
+.disabled {
+  border-color: #808080;
+  color: #808080;
+}
+.danger {
+  border-color: #ea0029;
+}
+</style>

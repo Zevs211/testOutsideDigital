@@ -1,0 +1,12 @@
+@import "./fonts.scss";
+
+* {
+  font-family: Lab Grotesque !important;
+}
+
+button {
+  font-family: Lab Grotesque !important;
+}
+
+$tabletMinWidth: 768px;
+$desktopMinWidth: 1440px;
