@@ -8,5 +8,9 @@ button {
   font-family: Lab Grotesque !important;
 }
 
-$tabletMinWidth: 768px;
-$desktopMinWidth: 1440px;
+.ml-2 {
+  margin-left: 8px;
+}
+.mt-2 {
+  margin-top: 8px;
+}

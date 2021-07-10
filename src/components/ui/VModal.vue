@@ -1,15 +1,19 @@
 <template>
-  <div class="modal-wrapper">
-    <div class="container">
-      <div class="container__head">
-        <span>{{ title }}</span>
-        <img src="@/assets/img/icon-close.svg" />
-      </div>
-      <div class="container__body">
-        <slot />
+  <transition name="modal">
+    <div class="modal-wrapper" @click.self="closeModal">
+      <div class="container">
+        <div class="container__head">
+          <span>{{ title }}</span>
+          <button class="container__head__btn" @click="closeModal">
+            <img src="@/assets/img/icon-close.svg" />
+          </button>
+        </div>
+        <div class="container__body">
+          <slot />
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -20,10 +24,10 @@ export default {
       type: String,
     },
   },
-  data() {
-    return {
-      isOpen: false,
-    };
+  methods: {
+    closeModal() {
+      this.$emit("on-modal-close");
+    },
   },
 };
 </script>
@@ -65,6 +69,11 @@ export default {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
+    &__btn {
+      cursor: pointer;
+      background-color: #ffffff;
+    }
 
     & > span {
       font-style: normal;

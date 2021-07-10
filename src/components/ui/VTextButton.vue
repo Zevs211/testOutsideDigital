@@ -1,5 +1,7 @@
 <template>
-  <i class="text-button">Рассчитать</i>
+  <div class="text-button">
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -10,7 +12,6 @@ export default {
 
 <style lang="scss" scoped>
 .text-button {
-  font-family: Lab Grotesque;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

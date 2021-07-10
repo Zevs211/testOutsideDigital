@@ -9,6 +9,7 @@
         type="text"
         placeholder="Введите данные"
         :disabled="disabled"
+        v-money="moneyConfig"
         :value="value"
         @input="onInput"
       />
@@ -17,8 +18,11 @@
 </template>
 
 <script>
+import { VMoney } from "v-money";
+
 export default {
   name: "VInput",
+  directives: { money: VMoney },
   props: {
     label: {
       type: String,
@@ -31,9 +35,8 @@ export default {
       type: Boolean,
       default: false,
     },
-    value: {
-      type: String,
-    },
+    value: {},
+    moneyConfig: {},
   },
   computed: {
     isNotValid() {

@@ -1,19 +1,27 @@
 <template>
   <div class="check-main">
     <label class="main">
-      <input type="checkbox" />
+      <input type="checkbox" v-model="checked" />
       <span class="geekmark"></span>
     </label>
-    <div class="check-title">{{ title }}</div>
+    <div class="check-title"><slot /></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "VCheckBox",
+  name: "VCheckbox",
   props: {
-    title: {
-      typy: String,
+    value: {},
+  },
+  computed: {
+    checked: {
+      get() {
+        return this.value;
+      },
+      set(value) {
+        this.$emit("input", value);
+      },
     },
   },
 };
@@ -52,6 +60,7 @@ input[type="checkbox"] {
   background-color: #ffffff;
   border-radius: 6px;
   border: 1px solid #dfe3e6;
+  transition: background-color 0.25s, border 0.25s;
 }
 
 .main:hover input ~ .geekmark {
@@ -60,6 +69,7 @@ input[type="checkbox"] {
 
 .main input:checked ~ .geekmark {
   background-color: #ff5e56;
+  // border: none;
 }
 
 .geekmark:after {
