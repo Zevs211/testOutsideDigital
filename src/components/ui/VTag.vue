@@ -1,6 +1,6 @@
 <template>
-  <div class="v-tag" :class="{ active: tag.isSelected }" @click="select">
-    <div class="v-tag__text">{{ tag.name }}</div>
+  <div class="tag" :class="{ active: tag.isSelected }" @click="select">
+    <div class="tag__text">{{ tag.name }}</div>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-tag {
+.tag {
   height: 36px;
   width: fit-content;
   background-color: #eef0f2;

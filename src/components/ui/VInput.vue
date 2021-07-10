@@ -14,6 +14,9 @@
         @input="onInput"
       />
     </div>
+    <div class="input__remark" v-if="isNotValid">
+      Поле обязательно для заполнения
+    </div>
   </div>
 </template>
 
@@ -40,7 +43,7 @@ export default {
   },
   computed: {
     isNotValid() {
-      return this.required && this.value === "";
+      return this.required && (this.value === "" || this.value === 0);
     },
   },
   methods: {
@@ -70,6 +73,7 @@ export default {
     border: 1px solid #dfe3e6;
     border-radius: 3px;
     background-color: white;
+    transition: border-color 0.25s;
 
     &:not(.disabled):hover {
       border-color: #000000;
@@ -89,6 +93,15 @@ export default {
         background-color: transparent;
       }
     }
+  }
+  &__remark {
+    margin-top: 4px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #ea0029;
   }
 }
 .disabled {

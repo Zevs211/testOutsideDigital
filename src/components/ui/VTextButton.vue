@@ -17,9 +17,10 @@ export default {
   font-size: 14px;
   line-height: 24px;
   color: #ea0029;
-}
-.text-button:hover {
-  cursor: pointer;
-  color: #f53a31;
+  transition: color 0.25s;
+  &:hover {
+    cursor: pointer;
+    color: #f53a31;
+  }
 }
 </style>

@@ -1,19 +1,17 @@
 <template>
-  <transition name="modal">
-    <div class="modal-wrapper" @click.self="closeModal">
-      <div class="container">
-        <div class="container__head">
-          <span>{{ title }}</span>
-          <button class="container__head__btn" @click="closeModal">
-            <img src="@/assets/img/icon-close.svg" />
-          </button>
-        </div>
-        <div class="container__body">
-          <slot />
-        </div>
+  <div class="modal-wrapper" @click.self="closeModal">
+    <div class="modal">
+      <div class="modal__head">
+        <span>{{ title }}</span>
+        <button @click="closeModal">
+          <img src="@/assets/img/icon-close.svg" />
+        </button>
+      </div>
+      <div class="modal__body">
+        <slot />
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>
@@ -46,7 +44,7 @@ export default {
 
   background-color: rgba(0, 0, 0, 0.3);
 }
-.container {
+.modal {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
@@ -70,7 +68,7 @@ export default {
     align-items: flex-start;
     justify-content: space-between;
 
-    &__btn {
+    & > button {
       cursor: pointer;
       background-color: #ffffff;
     }

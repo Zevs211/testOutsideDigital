@@ -32,9 +32,10 @@ export default {
 
   user-select: none;
   cursor: pointer;
+  transition: color 0.25s, background-color 0.25s;
 
   &:disabled {
-    background: #bec5cc;
+    background-color: #bec5cc;
     pointer-events: none;
     box-shadow: none;
   }

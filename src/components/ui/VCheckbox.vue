@@ -1,10 +1,10 @@
 <template>
-  <div class="check-main">
-    <label class="main">
+  <div class="checkbox">
+    <label class="checkbox__box">
       <input type="checkbox" v-model="checked" />
-      <span class="geekmark"></span>
+      <span></span>
     </label>
-    <div class="check-title"><slot /></div>
+    <div class="checkbox__title"><slot /></div>
   </div>
 </template>
 
@@ -28,70 +28,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.check-main {
+.checkbox {
   display: flex;
-}
-.check-title {
-  margin-top: 23px;
-  user-select: none;
-}
-.main {
-  width: 0;
-  display: flex;
-  position: relative;
-  margin: 20px 30px 20px 0;
-  cursor: pointer;
-  user-select: none;
-}
-.content {
-  padding-left: 15px;
-}
+  align-items: center;
+  &__title {
+    user-select: none;
+  }
+  &__box {
+    width: 0;
+    display: flex;
+    position: relative;
+    margin: 0px 30px 12px 0;
+    cursor: pointer;
+    user-select: none;
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #dfe3e6;
+      transition: background-color 0.25s, border 0.25s;
+    }
+    span:after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 5px;
+      width: 12px;
+      height: 5px;
 
-input[type="checkbox"] {
-  visibility: hidden;
-}
-
-.geekmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #ffffff;
-  border-radius: 6px;
-  border: 1px solid #dfe3e6;
-  transition: background-color 0.25s, border 0.25s;
-}
-
-.main:hover input ~ .geekmark {
-  border: 1px solid #000000;
-}
-
-.main input:checked ~ .geekmark {
-  background-color: #ff5e56;
-  // border: none;
-}
-
-.geekmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.main input:checked ~ .geekmark:after {
-  display: block;
-}
-
-.main .geekmark:after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 5px;
-  width: 12px;
-  height: 5px;
-
-  border-left: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  transform: rotate(-45deg);
+      border-left: 2px solid #ffffff;
+      border-bottom: 2px solid #ffffff;
+      transform: rotate(-45deg);
+    }
+    &:hover span {
+      border: 1px solid #000000;
+    }
+    input:checked ~ span {
+      background-color: #ff5e56;
+    }
+    input:checked ~ span:after {
+      display: block;
+    }
+  }
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
 }
 </style>
